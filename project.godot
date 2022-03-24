@@ -1,0 +1,109 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "Blast",
+"language": "GDScript",
+"path": "res://skills/shoot/blast.gd"
+}, {
+"base": "CPUParticles2D",
+"class": "BloodParticles",
+"language": "GDScript",
+"path": "res://BloodParticles.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Character",
+"language": "GDScript",
+"path": "res://characters/character.gd"
+}, {
+"base": "Character",
+"class": "Player",
+"language": "GDScript",
+"path": "res://characters/player/player.gd"
+}, {
+"base": "Node",
+"class": "Skill",
+"language": "GDScript",
+"path": "res://skills/skill.gd"
+}, {
+"base": "Resource",
+"class": "Stats",
+"language": "GDScript",
+"path": "res://characters/stats.gd"
+} ]
+_global_script_class_icons={
+"Blast": "",
+"BloodParticles": "",
+"Character": "",
+"Player": "",
+"Skill": "",
+"Stats": ""
+}
+
+[application]
+
+config/name="Godot Shooter Demo"
+config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://global.gd"
+
+[display]
+
+window/size/width=320
+window/size/height=180
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/normal_map_invert_y": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Enemy"
+2d_physics/layer_3="Attack"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+batching/debug/flash_batching=true
+environment/default_clear_color=Color( 0.380392, 0.407843, 0.227451, 1 )
+environment/default_environment="res://default_env.tres"

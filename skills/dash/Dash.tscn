@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://skills/dash/dash.gd" type="Script" id=1]
+[ext_resource path="res://skills/Skill.tscn" type="PackedScene" id=2]
+
+[node name="Dash" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+cooldown = 1.0
+dash_length = 0.005
+
+[node name="DashTimer" type="Timer" parent="." index="1"]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]

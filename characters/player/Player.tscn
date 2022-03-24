@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://characters/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://characters/player/player.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="Player" instance=ExtResource( 1 )]
+collision_mask = 2
+script = ExtResource( 2 )
+team_color = Color( 0.45098, 0.937255, 0.909804, 1 )
+
+[node name="Hurtbox" type="Area2D" parent="." index="4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource( 1 )
+
+[node name="iframes" type="Timer" parent="." index="5"]
+
+[connection signal="died" from="." to="." method="_on_Player_died"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_Hurtbox_body_entered"]
+[connection signal="timeout" from="iframes" to="." method="_on_iframes_timeout"]

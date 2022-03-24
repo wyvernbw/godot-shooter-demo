@@ -1,0 +1,138 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://characters/player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gui/Joystick.tscn" type="PackedScene" id=2]
+[ext_resource path="res://characters/player/knight.tres" type="Resource" id=3]
+[ext_resource path="res://skills/shoot/Shoot.tscn" type="PackedScene" id=4]
+[ext_resource path="res://characters/wraith/Wraith.tscn" type="PackedScene" id=5]
+[ext_resource path="res://world/World.gd" type="Script" id=6]
+
+[node name="World" type="Node2D"]
+script = ExtResource( 6 )
+enemies = [ ExtResource( 5 ) ]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 159, 96 )
+starting_stats = ExtResource( 3 )
+selected_skill = "Shoot"
+skills = [ ExtResource( 4 ) ]
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="MoveStick" parent="GUI" instance=ExtResource( 2 )]
+position = Vector2( 40, 128 )
+
+[node name="ShootStick" parent="GUI" instance=ExtResource( 2 )]
+position = Vector2( 264, 128 )
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="SpawnPositions" type="Node2D" parent="."]
+
+[node name="Position2D" type="Position2D" parent="SpawnPositions"]
+position = Vector2( 0, -16 )
+
+[node name="Position2D2" type="Position2D" parent="SpawnPositions"]
+position = Vector2( 40, -16 )
+
+[node name="Position2D3" type="Position2D" parent="SpawnPositions"]
+position = Vector2( 80, -16 )
+
+[node name="Position2D4" type="Position2D" parent="SpawnPositions"]
+position = Vector2( 120, -16 )
+
+[node name="Position2D5" type="Position2D" parent="SpawnPositions"]
+position = Vector2( 168, -16 )
+
+[node name="Position2D6" type="Position2D" parent="SpawnPositions"]
+position = Vector2( 208, -16 )
+
+[node name="Position2D7" type="Position2D" parent="SpawnPositions"]
+position = Vector2( 264, -16 )
+
+[node name="Position2D8" type="Position2D" parent="SpawnPositions"]
+position = Vector2( 304, -16 )
+
+[node name="Position2D9" type="Position2D" parent="SpawnPositions"]
+position = Vector2( 336, -16 )
+
+[node name="Position2D10" type="Position2D" parent="SpawnPositions"]
+position = Vector2( 344, 16 )
+
+[node name="Position2D11" type="Position2D" parent="SpawnPositions"]
+position = Vector2( 344, 40 )
+
+[node name="Position2D12" type="Position2D" parent="SpawnPositions"]
+position = Vector2( 344, 64 )
+
+[node name="Position2D13" type="Position2D" parent="SpawnPositions"]
+position = Vector2( 344, 104 )
+
+[node name="Position2D14" type="Position2D" parent="SpawnPositions"]
+position = Vector2( 344, 136 )
+
+[node name="Position2D15" type="Position2D" parent="SpawnPositions"]
+position = Vector2( 344, 160 )
+
+[node name="Position2D16" type="Position2D" parent="SpawnPositions"]
+position = Vector2( 344, 192 )
+
+[node name="Position2D17" type="Position2D" parent="SpawnPositions"]
+position = Vector2( 312, 208 )
+
+[node name="Position2D18" type="Position2D" parent="SpawnPositions"]
+position = Vector2( 272, 208 )
+
+[node name="Position2D19" type="Position2D" parent="SpawnPositions"]
+position = Vector2( 232, 208 )
+
+[node name="Position2D20" type="Position2D" parent="SpawnPositions"]
+position = Vector2( 192, 208 )
+
+[node name="Position2D21" type="Position2D" parent="SpawnPositions"]
+position = Vector2( 136, 208 )
+
+[node name="Position2D22" type="Position2D" parent="SpawnPositions"]
+position = Vector2( 104, 208 )
+
+[node name="Position2D23" type="Position2D" parent="SpawnPositions"]
+position = Vector2( 48, 208 )
+
+[node name="Position2D24" type="Position2D" parent="SpawnPositions"]
+position = Vector2( 16, 208 )
+
+[node name="Position2D25" type="Position2D" parent="SpawnPositions"]
+position = Vector2( -16, 208 )
+
+[node name="Position2D26" type="Position2D" parent="SpawnPositions"]
+position = Vector2( -16, 184 )
+
+[node name="Position2D27" type="Position2D" parent="SpawnPositions"]
+position = Vector2( -16, 152 )
+
+[node name="Position2D28" type="Position2D" parent="SpawnPositions"]
+position = Vector2( -16, 120 )
+
+[node name="Position2D29" type="Position2D" parent="SpawnPositions"]
+position = Vector2( -16, 96 )
+
+[node name="Position2D30" type="Position2D" parent="SpawnPositions"]
+position = Vector2( -16, 64 )
+
+[node name="Position2D31" type="Position2D" parent="SpawnPositions"]
+position = Vector2( -16, 32 )
+
+[node name="Position2D32" type="Position2D" parent="SpawnPositions"]
+position = Vector2( -16, 0 )
+
+[node name="Position2D33" type="Position2D" parent="SpawnPositions"]
+position = Vector2( -16, -16 )
+
+[node name="Position2D34" type="Position2D" parent="SpawnPositions"]
+position = Vector2( -16, -16 )
+
+[connection signal="joystick_moved" from="GUI/MoveStick" to="Player" method="_on_MoveStick_joystick_moved"]
+[connection signal="joystick_moved" from="GUI/ShootStick" to="Player" method="_on_ShootStick_joystick_moved"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

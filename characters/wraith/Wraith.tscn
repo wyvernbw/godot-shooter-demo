@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://characters/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://characters/wraith/enemy.png" type="Texture" id=2]
+[ext_resource path="res://characters/wraith/wraith.tres" type="Resource" id=3]
+[ext_resource path="res://characters/wraith/wraith.gd" type="Script" id=4]
+[ext_resource path="res://skills/dash/Dash.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 22.2036
+
+[node name="Wraith" groups=["enemy"] instance=ExtResource( 1 )]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource( 4 )
+starting_stats = ExtResource( 3 )
+selected_skill = "Dash"
+skills = [ ExtResource( 5 ) ]
+team_color = Color( 0.886275, 0.447059, 0.521569, 1 )
+engage_distance = 64
+
+[node name="Body" parent="." index="1"]
+texture = ExtResource( 2 )
+
+[node name="DodgeZone" type="Area2D" parent="." index="3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DodgeZone" index="0"]
+visible = false
+shape = SubResource( 1 )
+
+[connection signal="area_entered" from="DodgeZone" to="." method="_on_DodgeZone_area_entered"]

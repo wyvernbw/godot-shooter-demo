@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://characters/stats.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+max_hp = 20
+max_mana = 10
+defense = 20
+speed = 10
+damage_mod = 1.5
+haste = 0.0
