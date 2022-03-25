@@ -51,6 +51,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot Shooter Demo"
+run/main_scene="res://world/World.tscn"
 config/icon="res://icon.png"
 
 [autoload]
