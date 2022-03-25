@@ -14,7 +14,6 @@ var joystick_active : bool = false
 
 func _input(event : InputEvent) -> void:
 	if event is InputEventScreenTouch or event is InputEventScreenDrag:
-		print(event.position)
 		if in_search_area(event.position) or joystick_active:
 			button.global_position = event.position - Vector2(button_radius, button_radius)
 			joystick_active = true
