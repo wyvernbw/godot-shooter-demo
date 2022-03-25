@@ -21,9 +21,11 @@ skills = [ ExtResource( 4 ) ]
 
 [node name="MoveStick" parent="GUI" instance=ExtResource( 2 )]
 position = Vector2( 40, 128 )
+search_radius = 128
 
 [node name="ShootStick" parent="GUI" instance=ExtResource( 2 )]
 position = Vector2( 264, 128 )
+search_radius = 128
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 3.0
