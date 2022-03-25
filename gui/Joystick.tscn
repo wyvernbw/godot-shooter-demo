@@ -8,6 +8,7 @@
 radius = 9.0
 
 [node name="Joystick" type="Node2D"]
+position = Vector2( 63, 31 )
 script = ExtResource( 3 )
 search_radius = 50
 
@@ -29,3 +30,7 @@ texture = ExtResource( 1 )
 
 [node name="Center" type="Position2D" parent="."]
 position = Vector2( 8, 8 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 8, 8 )
+enabled = true
