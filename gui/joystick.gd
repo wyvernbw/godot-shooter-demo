@@ -36,8 +36,8 @@ func calculate_move_vector() -> Vector2:
 	return (button.global_position - self.position).normalized()
 
 func in_search_area(pos : Vector2) -> bool:
-	var length = (self.position - pos).length()
-	return length <= search_radius
+	var length = ($Center.position - pos).length()
+	return length <= search_radius * (scale.x + scale.y) / 2
 
 func set_search_radius(new_radius : int) -> void:
 	search_radius = new_radius
