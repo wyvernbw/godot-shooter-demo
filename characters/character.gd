@@ -28,6 +28,7 @@ var hp : int
 var mana : int
 var velocity := Vector2.ZERO
 var speed_vector := Vector2.ZERO
+var move_dir := Vector2.ZERO
 var friction := 0.3
 var dead : bool = false
 
@@ -38,6 +39,8 @@ func _process(_delta) -> void:
 	pass
 
 func _physics_process(_delta) -> void:
+	if move_dir:
+		velocity += move_dir * speed_vector
 	velocity.x = lerp(velocity.x, 0, friction)
 	velocity.y = lerp(velocity.y, 0, friction)
 	velocity = move_and_slide(velocity, Vector2.ZERO)

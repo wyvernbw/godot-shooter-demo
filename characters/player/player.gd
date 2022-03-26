@@ -17,11 +17,13 @@ func _ready() -> void:
 	Global.Player = self
 
 func _on_MoveStick_joystick_moved(dir : Vector2) -> void:
-	velocity += dir * speed_vector
+	move_dir = dir
 	rotation = Vector2.DOWN.angle_to(dir)
 
 
 func _on_ShootStick_joystick_moved(dir : Vector2) -> void:
+	if not dir:
+		return
 	rotation = Vector2.DOWN.angle_to(dir)
 	var current_skill := $Skills.get_node(selected_skill)
 	current_skill.dir = dir

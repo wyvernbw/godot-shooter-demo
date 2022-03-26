@@ -20,11 +20,11 @@ skills = [ ExtResource( 4 ) ]
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="MoveStick" parent="GUI" instance=ExtResource( 2 )]
-position = Vector2( 40, 128 )
+position = Vector2( 48, 136 )
 search_radius = 128
 
 [node name="ShootStick" parent="GUI" instance=ExtResource( 2 )]
-position = Vector2( 264, 128 )
+position = Vector2( 272, 136 )
 search_radius = 128
 
 [node name="SpawnTimer" type="Timer" parent="."]
