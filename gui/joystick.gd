@@ -8,6 +8,7 @@ const NO_INPUT : int = -1
 export var available_radius : int = 32
 export var button_radius : int = 8
 export var search_radius : int = 128 setget set_search_radius
+export var deadzone_radius : int = 4 setget set_deadzone_radius
 
 onready var button := get_node("InnerCircle")
 
@@ -17,6 +18,8 @@ var current_index := NO_INPUT
 
 func _input(event : InputEvent) -> void:
 	if event is InputEventScreenTouch or event is InputEventScreenDrag:
+		if not in_dead_zone(event):
+			return
 		if in_search_area(event) or joystick_active:
 			if current_index == NO_INPUT:
 				current_index = event.get_index()
@@ -41,9 +44,16 @@ func _process(_delta) -> void:
 		emit_signal("joystick_moved", calculate_move_vector())
 	if Engine.editor_hint:
 		self.search_radius = search_radius
+		self.deadzone_radius = deadzone_radius
 
 func calculate_move_vector() -> Vector2:
 	return (button.global_position - self.position).normalized()
+
+func in_dead_zone(event : InputEvent) -> bool:
+	var vec = event.position - $Center.global_position
+	if event.get_index() == current_index:
+		$RayCast2D.cast_to = vec * 2 / (scale.x + scale.y)
+	return vec.length() >= deadzone_radius * (scale.x + scale.y) / 2
 
 func in_search_area(event : InputEvent) -> bool:
 	var vec = event.position - $Center.global_position
@@ -57,3 +67,10 @@ func set_search_radius(new_radius : int) -> void:
 		return
 	$SearchAreaPreview.scale.x = float(new_radius) / 32 
 	$SearchAreaPreview.scale.y = float(new_radius) / 32 
+
+func set_deadzone_radius(new_radius : int) -> void:
+	deadzone_radius = new_radius
+	if not get_node_or_null("DeadzonePreview"):
+		return
+	$DeadzonePreview.scale.x = float(new_radius) / 32
+	$DeadzonePreview.scale.y = float(new_radius) / 32
